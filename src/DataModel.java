@@ -23,6 +23,7 @@ public class DataModel {
     }
 
     public static ArrayList recoverProvider() {
+        System.out.println("bandera");
         ArrayList<Provider> recoverP = new ArrayList<>();
         try {
             ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("C:/dates/Provider.txt"));

@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Medicine implements Serializable {
-
     private int code;
     private String name;
     private int amount;
