@@ -63,7 +63,6 @@ public class View {
         System.out.println("Precio x unidad: ");
         unit_price = read.nextLine();
         dates.add(unit_price);
-        System.out.println("Elija proveedor: ");
         return dates;
     }
     public static void listMedicine(ArrayList<Medicine> medicines) {

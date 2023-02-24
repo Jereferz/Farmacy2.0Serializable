@@ -60,7 +60,7 @@ public class Provider implements Serializable {
     public String toString() {
         return "Provider{" +
                 "Nombre =' " + name + '\'' +
-                " N° de Cel=' " + phoneNumber +
+                "Celular =' " + phoneNumber +
                 '}';
     }
     /*public String toString() {
