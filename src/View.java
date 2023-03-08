@@ -20,7 +20,8 @@ public class View {
             System.out.println("2. Agregar Medicamento");
             System.out.println("3. Mostrar inventario");
             System.out.println("4. Mostrar Proveedores");
-            System.out.println("5. Salir");
+            System.out.println("5. Cambiar Precio de Medicamento");
+            System.out.println("6. Salir");
             leer = leer1.nextInt();
             return leer;
         }catch (InputMismatchException o) {
@@ -79,18 +80,15 @@ public class View {
     public static void seeValidation (String result){
         System.out.println(result);
     }
-    /*public void listProvider(ResultSet prove) throws SQLException {
-        int cont = 0;
-        while(prove.next()) {
-            ++cont;
-            PrintStream a1 = System.out;
-            int a = prove.getInt(1);
-            a1.println("" + a + "Proveedor: " + prove.getString(2));
-        }
+    public static int saveCode() {
+        System.out.println("Ingrese el codigo del medicamento que quiere cambiar");
+        int code = read.nextInt();
+        return code;
+    }
+    public static Double newPrice() {
+        System.out.println("Ingrese el nuevo precio");
+        double unitPrice = read.nextDouble();
+        return unitPrice;
     }
 
-    public static void listProvider(Provider PM) {
-        System.out.println("Lista de Proveedores");
-        System.out.println(PM);
-    }*/
 }

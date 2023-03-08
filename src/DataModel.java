@@ -6,10 +6,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.*;
 
-public class DataModel {
+public class DataModel extends Medicine {
+    public DataModel(int code, String name, int amount, double unitPrice) {
+        super(code, name, amount, unitPrice);
+    }
+
     public static void saveProvider(Provider p) {
         ArrayList<Provider> providers = new ArrayList<>();
         providers.addAll(DataModel.recoverProvider());
@@ -49,8 +54,8 @@ public class DataModel {
         }
     }
 
-    public static ArrayList recoverMedicine() {
-        ArrayList<Medicine> recoverM = new ArrayList<>();
+    public static List<Medicine> recoverMedicine() {
+        List<Medicine> recoverM = new ArrayList<>();
         try {
             ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("C:/dates/Medicine.txt"));
             recoverM = (ArrayList<Medicine>) getDates.readObject();
@@ -59,6 +64,36 @@ public class DataModel {
 
         }
         return recoverM;
+    }
+    public static void sobreescribirMed(List <Medicine> sobreescrito){
+        ArrayList<Medicine> MedicinesTxt = (ArrayList<Medicine>) sobreescrito;
+        try {
+            ObjectOutputStream setDates= new ObjectOutputStream(new FileOutputStream("C:/MisFicheros/Medicine.txt"));
+            setDates.writeObject(MedicinesTxt);
+            setDates.close();
+        }catch (Exception e){
+            System.out.println("Fallo la conexion del txt guardar");
+        }
+    }
+    public static List<Medicine> searchMedicineTxt(int code, String price) {
+        List<Medicine> med = recoverMedicine();
+        try {
+            for (int i = 0; i < med.size(); i++) {
+                if (med.get(i).getCode() == code) {
+                    med.get(i).setUnitPrice(Double.parseDouble(price));
+                    System.out.println("Encontrado");
+                    System.out.println(med.get(i));
+                    sobreescribirMed(med);
+                    break;
+                }else {
+                    System.out.println("no econtrado");
+                }
+            }
+            return med;
+        } catch (Exception e) {
+            return med;
+        }
+
     }
 
 }

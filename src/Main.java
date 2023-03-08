@@ -44,7 +44,11 @@ public class Main {
                     View.listMedicine(listMedicin);
                 } else if (leer == 4){
                     View.listProvider(listProvide);
-                } else if (leer == 5) {
+                } else if (leer == 5){
+                    int code = View.saveCode();
+                    double unitPrice = View.newPrice();
+                    DataModel.searchMedicineTxt(code,unitPrice);
+                } else if (leer == 6) {
                     flat = false;
                 }
             } catch (InputMismatchException var14) {
