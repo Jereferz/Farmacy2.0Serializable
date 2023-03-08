@@ -23,7 +23,7 @@ public class DataModel {
     }
 
     public static ArrayList recoverProvider() {
-        System.out.println("bandera");
+
         ArrayList<Provider> recoverP = new ArrayList<>();
         //Para Windows
         //C:/dates/Provider.txt
