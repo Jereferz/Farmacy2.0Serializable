@@ -11,8 +11,10 @@ public class DataModel {
         ArrayList<Provider> providers = new ArrayList<>();
         providers.addAll(DataModel.recoverProvider());
         providers.add(p);
+        //Para Windows
+        //C:/dates/Provider.txt
         try {
-            ObjectOutputStream copyDates = new ObjectOutputStream(new FileOutputStream("C:/dates/Provider.txt"));
+            ObjectOutputStream copyDates = new ObjectOutputStream(new FileOutputStream("/home/jere/Desktop/dates/Provider.txt"));
             copyDates.writeObject(providers);
             copyDates.close();
         } catch (Exception e) {
@@ -23,8 +25,10 @@ public class DataModel {
     public static ArrayList recoverProvider() {
         System.out.println("bandera");
         ArrayList<Provider> recoverP = new ArrayList<>();
+        //Para Windows
+        //C:/dates/Provider.txt
         try {
-            ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("C:/dates/Provider.txt"));
+            ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("/home/jere/Desktop/dates/Provider.txt"));
             recoverP = (ArrayList<Provider>) getDates.readObject();
         } catch (Exception e) {
 
@@ -38,7 +42,7 @@ public class DataModel {
         medicines.add(m);
 
         try {
-            ObjectOutputStream copyDates = new ObjectOutputStream(new FileOutputStream("C:/dates/Medicine.txt"));
+            ObjectOutputStream copyDates = new ObjectOutputStream(new FileOutputStream("/home/jere/Desktop/dates/Medicine.txt"));
             copyDates.writeObject(medicines);
             copyDates.close();
         } catch (Exception e) {
@@ -49,7 +53,7 @@ public class DataModel {
     public static List<Medicine> recoverMedicine() {
         List<Medicine> recoverM = new ArrayList<>();
         try {
-            ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("C:/dates/Medicine.txt"));
+            ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("/home/jere/Desktop/dates/Medicine.txt"));
             recoverM = (ArrayList<Medicine>) getDates.readObject();
 
         } catch (Exception e) {
@@ -60,8 +64,8 @@ public class DataModel {
     public static void sobreescribirMed(List <Medicine> sobreescrito){
         ArrayList<Medicine> MedicinesTxt = (ArrayList<Medicine>) sobreescrito;
         try {
-            ObjectOutputStream setDates= new ObjectOutputStream(new FileOutputStream("C:/MisFicheros/Medicine.txt"));
-            setDates.writeObject(MedicinesTxt);
+            ObjectOutputStream setDates= new ObjectOutputStream(new FileOutputStream("/home/jere/Desktop/dates/Medicine.txt"));
+            setDates.writeObject(sobreescrito);
             setDates.close();
         }catch (Exception e){
             System.out.println("Fallo la conexion del txt guardar");

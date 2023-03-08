@@ -35,7 +35,6 @@ public class View {
     public static ArrayList registerProvider() {
         ArrayList<String>dates= new ArrayList<>();
         Scanner leer2 = new Scanner(System.in);
-
         System.out.println("Ingrese el nombre del Proveedor");
         String name = leer2.nextLine();
         dates.add(name);
@@ -64,7 +63,7 @@ public class View {
         System.out.println("Precio x unidad: ");
         unit_price = read.nextLine();
         dates.add(unit_price);
-        System.out.println(dates);
+        //System.out.println(dates);
         return dates;
     }
     public static void listMedicine(List<Medicine> medicines) {
@@ -88,8 +87,9 @@ public class View {
         return code1;
     }
     public static String newPrice() {
+        Scanner num2 = new Scanner(System.in);
         System.out.println("Ingrese el nuevo precio");
-        String unitPrice = num1.nextLine();
+        String unitPrice = num2.nextLine();
         return unitPrice;
     }
 
