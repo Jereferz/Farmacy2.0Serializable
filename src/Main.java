@@ -1,6 +1,6 @@
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 
 
 public class Main {
@@ -12,7 +12,7 @@ public class Main {
         do {
             try {
                 ArrayList<Provider> listProvide = DataModel.recoverProvider();
-                ArrayList<Medicine> listMedicin = DataModel.recoverMedicine();
+                List<Medicine> listMedicin = DataModel.recoverMedicine();
                 leer = View.menu();
                 ArrayList dates;
                 if (leer == 1) {
@@ -30,8 +30,8 @@ public class Main {
                     dates = View.registerMedicine();
                     int code = Integer.parseInt((String)dates.get(0));
                     String name = (String)dates.get(1);
-                    int amount = Integer.parseInt((String)dates.get(0));
-                    double unitPrice = Double.parseDouble((String)dates.get(0));
+                    int amount = Integer.parseInt((String)dates.get(2));
+                    int unitPrice = Integer.parseInt((String)dates.get(3));
 
                     Medicine med = new Medicine(code,name,amount,unitPrice);
                     if (med.validation()){
@@ -46,7 +46,7 @@ public class Main {
                     View.listProvider(listProvide);
                 } else if (leer == 5){
                     int code = View.saveCode();
-                    double unitPrice = View.newPrice();
+                    String unitPrice = View.newPrice();
                     DataModel.searchMedicineTxt(code,unitPrice);
                 } else if (leer == 6) {
                     flat = false;

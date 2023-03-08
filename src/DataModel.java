@@ -2,18 +2,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.io.*;
 
-public class DataModel extends Medicine {
-    public DataModel(int code, String name, int amount, double unitPrice) {
-        super(code, name, amount, unitPrice);
-    }
+public class DataModel {
 
     public static void saveProvider(Provider p) {
         ArrayList<Provider> providers = new ArrayList<>();
@@ -80,7 +72,7 @@ public class DataModel extends Medicine {
         try {
             for (int i = 0; i < med.size(); i++) {
                 if (med.get(i).getCode() == code) {
-                    med.get(i).setUnitPrice(Double.parseDouble(price));
+                    med.get(i).setUnitPrice(Integer.parseInt(price));
                     System.out.println("Encontrado");
                     System.out.println(med.get(i));
                     sobreescribirMed(med);

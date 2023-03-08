@@ -1,14 +1,14 @@
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Medicine implements Serializable {
     private int code;
     private String name;
     private int amount;
-    private double unitPrice;
+    private int unitPrice;
     //Contructor de medicinas
-    public Medicine(int code, String name, int amount, double unitPrice) {
+    public Medicine(int code, String name, int amount, int unitPrice) {
         super();
         this.code = code;
         this.name = name;
@@ -34,10 +34,10 @@ public class Medicine implements Serializable {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    public double getUnitPrice() {
+    public int getUnitPrice() {
         return unitPrice;
     }
-    public void setUnitPrice(double unitPrice) {
+    public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -50,7 +50,7 @@ public class Medicine implements Serializable {
     }
 
     public boolean validation(){
-        ArrayList<Medicine> seeMed=DataModel.recoverMedicine();
+        List<Medicine> seeMed=DataModel.recoverMedicine();
         boolean  ret=false;
         for(int i=0;i<seeMed.size();i++){
             if(equals(seeMed.get(i))){

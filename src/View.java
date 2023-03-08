@@ -1,14 +1,14 @@
-import java.io.PrintStream;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import org.junit.platform.engine.support.descriptor.FileSystemSource;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
     //Menu inicial que ve el usuario
     static Scanner read;
-    static Scanner num1 ;
+    static Scanner num1 = new Scanner(System.in);
 
     public static int menu() {
         Scanner leer1 = new Scanner(System.in);
@@ -64,9 +64,10 @@ public class View {
         System.out.println("Precio x unidad: ");
         unit_price = read.nextLine();
         dates.add(unit_price);
+        System.out.println(dates);
         return dates;
     }
-    public static void listMedicine(ArrayList<Medicine> medicines) {
+    public static void listMedicine(List<Medicine> medicines) {
         for (int i = 0; i < medicines.size(); i++) {
             System.out.println(i+"==>"+medicines.get(i));
         }
@@ -82,12 +83,13 @@ public class View {
     }
     public static int saveCode() {
         System.out.println("Ingrese el codigo del medicamento que quiere cambiar");
-        int code = read.nextInt();
-        return code;
+
+        int code1 = num1.nextInt();
+        return code1;
     }
-    public static Double newPrice() {
+    public static String newPrice() {
         System.out.println("Ingrese el nuevo precio");
-        double unitPrice = read.nextDouble();
+        String unitPrice = num1.nextLine();
         return unitPrice;
     }
 
