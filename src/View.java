@@ -109,14 +109,9 @@ public class View {
             return cadena;
         }
     }
-    public boolean esNumeroDeCelularValido(String numeroCelular) {
-        String expresion = "^\\d{10}$"; // Asumiendo que el número de celular consta de 10 dígitos
-        Pattern pattern = Pattern.compile(expresion);
-        Matcher matcher = pattern.matcher(numeroCelular);
-        return matcher.matches();
-    }
     private static int validarCelular(int cadena) {
-        if (Integer.toString(cadena).length() == 10 ) {
+        if (Integer.toString(cadena).length() == 10) {
+
             return cadena;
         }else {
             do {
@@ -145,11 +140,10 @@ public class View {
     public boolean esCampoVacio(String texto) {
         return texto == null || texto.trim().isEmpty();
     }
-    public static boolean esNumeroEntero(String texto) {
-        try {
-            Integer.parseInt(texto);
+    public static boolean validarInt(String cadena) {
+        if (cadena.matches("[0-9]{1,2}")) {
             return true;
-        } catch (NumberFormatException e) {
+        } else {
             return false;
         }
     }
