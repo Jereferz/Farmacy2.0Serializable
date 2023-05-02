@@ -13,6 +13,8 @@ public class DataModel {
         providers.add(p);
         //Para Windows
         //C:/dates/Provider.txt
+        //Para Linux
+        ///home/jere/Desktop/dates/Provider.txt
         try {
             ObjectOutputStream copyDates = new ObjectOutputStream(new FileOutputStream("/home/jere/Desktop/dates/Provider.txt"));
             copyDates.writeObject(providers);

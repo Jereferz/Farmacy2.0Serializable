@@ -92,5 +92,54 @@ public class View {
         String unitPrice = num2.nextLine();
         return unitPrice;
     }
+    //Validacion para cambiar tamaño de codigo por si en algun momento lo quiere cambiar el cliente
+    private static String validarCode(String cadena) {
+        if (cadena.length() == 4 ) {
+            return cadena;
+        }else {
+            do {
+                System.out.println("Ingrese un Codigo valido intente de nuevo");
+                cadena = read.nextLine();
+            } while (cadena.length() != 4);
+            return cadena;
+        }
+    }
+    private static String validarCelular(String cadena) {
+        if (cadena.length() == 10 ) {
+            return cadena;
+        }else {
+            do {
+                System.out.println("Ingrese un Codigo valido intente de nuevo");
+                cadena = read.nextLine();
+            } while (cadena.length() != 10);
+            return cadena;
+        }
+    }
+    public static boolean validar(String cadena) {
+        if (cadena.matches("[a-z]*")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static String valiCadena( String cadena){
+        Scanner Leer = new Scanner(System.in);
+        while (validar(cadena) == false){
+            System.out.println("Dato ingresado no valido intente nuevamente ");
+            cadena = Leer.nextLine();
 
+        }
+        return cadena;
+    }
+    public boolean esCampoVacio(String texto) {
+        return texto == null || texto.trim().isEmpty();
+    }
+    public static boolean esNumeroEntero(String texto) {
+        try {
+            Integer.parseInt(texto);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }
