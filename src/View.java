@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class View {
     //Menu inicial que ve el usuario
@@ -35,12 +37,15 @@ public class View {
     public static ArrayList registerProvider() {
         ArrayList<String>dates= new ArrayList<>();
         Scanner leer2 = new Scanner(System.in);
+        Scanner leer1 = new Scanner(System.in);
+
         System.out.println("Ingrese el nombre del Proveedor");
         String name = leer2.nextLine();
         dates.add(name);
         System.out.println("Ingrese el Celular");
-        String phone = leer2.nextLine();
-        dates.add(phone);
+        int phone = leer1.nextInt();
+        int phone2 = validarCelular(phone);
+        dates.add(String.valueOf(phone2));
         return dates;
     }
     public static ArrayList registerMedicine() {
@@ -99,19 +104,25 @@ public class View {
         }else {
             do {
                 System.out.println("Ingrese un Codigo valido intente de nuevo");
-                cadena = read.nextLine();
+                cadena = num1.nextLine();
             } while (cadena.length() != 4);
             return cadena;
         }
     }
-    private static String validarCelular(String cadena) {
-        if (cadena.length() == 10 ) {
+    public boolean esNumeroDeCelularValido(String numeroCelular) {
+        String expresion = "^\\d{10}$"; // Asumiendo que el número de celular consta de 10 dígitos
+        Pattern pattern = Pattern.compile(expresion);
+        Matcher matcher = pattern.matcher(numeroCelular);
+        return matcher.matches();
+    }
+    private static int validarCelular(int cadena) {
+        if (Integer.toString(cadena).length() == 10 ) {
             return cadena;
         }else {
             do {
-                System.out.println("Ingrese un Codigo valido intente de nuevo");
-                cadena = read.nextLine();
-            } while (cadena.length() != 10);
+                System.out.println("Ingrese un Celular valido intente de nuevo");
+                cadena = num1.nextInt();
+            } while (Integer.toString(cadena).length() != 10);
             return cadena;
         }
     }
