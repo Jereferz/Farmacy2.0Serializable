@@ -73,6 +73,16 @@ public class DataModel {
             System.out.println("Fallo la conexion del txt guardar");
         }
     }
+    public static void sobreescribirProv(List <Provider> sobreescrito){
+        ArrayList<Provider> ProviderTxt = (ArrayList<Provider>) sobreescrito;
+        try {
+            ObjectOutputStream setDates= new ObjectOutputStream(new FileOutputStream("/home/jere/Desktop/dates/Provider.txt"));
+            setDates.writeObject(sobreescrito);
+            setDates.close();
+        }catch (Exception e){
+            System.out.println("Fallo la conexion del txt guardar");
+        }
+    }
     public static List<Medicine> searchMedicineTxt(int code, String price) {
         List<Medicine> med = recoverMedicine();
         try {
@@ -90,6 +100,18 @@ public class DataModel {
             return med;
         } catch (Exception e) {
             return med;
+        }
+
+    }
+    public static void deleteMedicineTxt (String cel){
+        List<Provider> providers = recoverProvider();
+        for (int i = 0; i <providers.size(); i++) {
+            if (Integer.parseInt(cel) == providers.get(i).getPhoneNumber()) {
+                providers.remove(i);
+                System.out.println("Eliminado correctamente");
+                sobreescribirProv(providers);
+                break;
+            }
         }
 
     }

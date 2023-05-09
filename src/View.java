@@ -23,7 +23,8 @@ public class View {
             System.out.println("3. Mostrar inventario");
             System.out.println("4. Mostrar Proveedores");
             System.out.println("5. Cambiar Precio de Medicamento");
-            System.out.println("6. Salir");
+            System.out.println("6. Eliminar Proveedor");
+            System.out.println("7. Salir");
             leer = leer1.nextInt();
             return leer;
         }catch (InputMismatchException o) {
@@ -45,6 +46,8 @@ public class View {
         System.out.println("Ingrese el Celular");
         int phone = leer1.nextInt();
         int phone2 = validarCelular(phone);
+        //int phone3 = validarInt(phone2);
+
         dates.add(String.valueOf(phone2));
         return dates;
     }
@@ -81,6 +84,15 @@ public class View {
         for (int i = 0; i < providers.size(); i++) {
             System.out.println(i+"==>"+providers.get(i));
         }
+    }
+    public static String eliminarProvider() {
+        Scanner leer = new Scanner(System.in);
+        System.out.println("-------------------------------------------------------");
+        System.out.println("6- Eliminar Proveedor");
+        System.out.println("Ingrese el Celular del Proveedor que desea Eliminar");
+        System.out.println("-------------------------------------------------------");
+        String cel = leer.nextLine();
+        return cel;
     }
     public static void seeValidation (String result){
         System.out.println(result);
@@ -121,6 +133,18 @@ public class View {
             return cadena;
         }
     }
+    private static int validarVacio(int cadena) {
+        if (Integer.toString(cadena).equals("")) {
+
+            do {
+                System.out.println("Ingrese un Celular valido intente de nuevo");
+                cadena = num1.nextInt();
+            } while (Integer.toString(cadena).equals(""));
+            return cadena;
+        }else {
+            return cadena;
+        }
+    }
     public static boolean validar(String cadena) {
         if (cadena.matches("[a-z]*")) {
             return true;
@@ -140,11 +164,15 @@ public class View {
     public boolean esCampoVacio(String texto) {
         return texto == null || texto.trim().isEmpty();
     }
-    public static boolean validarInt(String cadena) {
-        if (cadena.matches("[0-9]{1,2}")) {
-            return true;
+    public static int validarInt(int cadena) {
+        if (Integer.toString(cadena).matches("[0-9]{1,2}")) {
+            return cadena;
         } else {
-            return false;
+            do {
+                System.out.println("Ingrese un Codigo valido intente de nuevo");
+                cadena = num1.nextInt();
+            } while (Integer.toString(cadena).matches("[a-z]*"));
+            return cadena;
         }
     }
 }

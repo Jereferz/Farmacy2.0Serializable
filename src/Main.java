@@ -49,6 +49,10 @@ public class Main {
                     String unitPrice = View.newPrice();
                     DataModel.searchMedicineTxt(code,unitPrice);
                 } else if (leer == 6) {
+                    View.listProvider(listProvide);
+                    String cel = View.eliminarProvider();
+                    DataModel.deleteMedicineTxt(cel);
+                } else if (leer == 7) {
                     flat = false;
                 }
             } catch (InputMismatchException var14) {
