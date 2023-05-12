@@ -43,10 +43,10 @@ public class View {
         System.out.println("Ingrese el nombre del Proveedor");
         String name = leer2.nextLine();
         dates.add(name);
-        System.out.println("Ingrese el Celular");
-        int phone = leer1.nextInt();
-        int phone2 = validarCelular(phone);
-        //int phone3 = validarInt(phone2);
+        int phone2 = validatePhone(leer1);
+        //int phone3 = validarCelular(phone2);
+
+
 
         dates.add(String.valueOf(phone2));
         return dates;
@@ -101,6 +101,7 @@ public class View {
         System.out.println("Ingrese el codigo del medicamento que quiere cambiar");
 
         int code1 = num1.nextInt();
+        
         return code1;
     }
     public static String newPrice() {
@@ -164,15 +165,33 @@ public class View {
     public boolean esCampoVacio(String texto) {
         return texto == null || texto.trim().isEmpty();
     }
-    public static int validarInt(int cadena) {
-        if (Integer.toString(cadena).matches("[0-9]{1,2}")) {
-            return cadena;
-        } else {
-            do {
-                System.out.println("Ingrese un Codigo valido intente de nuevo");
-                cadena = num1.nextInt();
-            } while (Integer.toString(cadena).matches("[a-z]*"));
-            return cadena;
-        }
+    public static int validateInt(Scanner scanner) {
+        int phone;
+        do {
+            System.out.println("Ingrese el Celular");
+            while (!scanner.hasNextInt()) {
+                System.out.println("El valor ingresado no es un número válido. Por favor, ingrese un número de teléfono válido.");
+                scanner.next(); // Descarta la entrada no válida
+            }
+            phone = scanner.nextInt();
+        } while (phone <= 0);
+
+        return phone;
+    }
+    public static int validatePhone(Scanner numerito) {
+        int phone;
+        do {
+            System.out.println("Ingrese el Celular");
+            while (!numerito.hasNextInt()) {
+                System.out.println("El valor ingresado no es un número válido. Por favor, ingrese un número de teléfono válido.");
+                numerito.next(); // Descarta la entrada no válida
+            }
+            phone = numerito.nextInt();
+            if (String.valueOf(phone).length() != 10) {
+                System.out.println("El número de teléfono debe tener 10 dígitos. Por favor, ingrese un número de teléfono válido.");
+            }
+        } while (phone <= 0 || String.valueOf(phone).length() != 10);
+
+        return phone;
     }
 }

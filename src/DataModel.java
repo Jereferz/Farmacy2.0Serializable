@@ -39,6 +39,7 @@ public class DataModel {
     }
 
     public static void saveMedicine(Medicine m) {
+        //Guarda los datos que seteamos en el txt
         ArrayList<Medicine> medicines = new ArrayList<>();
         medicines.addAll(DataModel.recoverMedicine());
         medicines.add(m);
@@ -53,6 +54,7 @@ public class DataModel {
     }
 
     public static List<Medicine> recoverMedicine() {
+        //Recupera los datos que estan en el txt
         List<Medicine> recoverM = new ArrayList<>();
         try {
             ObjectInputStream getDates = new ObjectInputStream(new FileInputStream("/home/jere/Desktop/dates/Medicine.txt"));
@@ -64,6 +66,7 @@ public class DataModel {
         return recoverM;
     }
     public static void sobreescribirMed(List <Medicine> sobreescrito){
+        //Este metodo es para Sobreescribir el nuevo precio que le voy a setear
         ArrayList<Medicine> MedicinesTxt = (ArrayList<Medicine>) sobreescrito;
         try {
             ObjectOutputStream setDates= new ObjectOutputStream(new FileOutputStream("/home/jere/Desktop/dates/Medicine.txt"));
@@ -84,7 +87,9 @@ public class DataModel {
         }
     }
     public static List<Medicine> searchMedicineTxt(int code, String price) {
+        //Este metodo esta hecho para buscar la medicina que quiero modificar
         List<Medicine> med = recoverMedicine();
+        //Recupero el array donde estan todas las medicinas
         try {
             for (int i = 0; i < med.size(); i++) {
                 if (med.get(i).getCode() == code) {
@@ -103,7 +108,7 @@ public class DataModel {
         }
 
     }
-    public static void deleteMedicineTxt (String cel){
+    public static void deleteProviderTxt (String cel){
         List<Provider> providers = recoverProvider();
         for (int i = 0; i <providers.size(); i++) {
             if (Integer.parseInt(cel) == providers.get(i).getPhoneNumber()) {
@@ -115,5 +120,6 @@ public class DataModel {
         }
 
     }
+
 
 }

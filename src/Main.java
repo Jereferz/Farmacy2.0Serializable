@@ -51,7 +51,7 @@ public class Main {
                 } else if (leer == 6) {
                     View.listProvider(listProvide);
                     String cel = View.eliminarProvider();
-                    DataModel.deleteMedicineTxt(cel);
+                    DataModel.deleteProviderTxt(cel);
                 } else if (leer == 7) {
                     flat = false;
                 }
